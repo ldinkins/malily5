@@ -57,3 +57,11 @@ else
 echo -e ${GREEN}"Okay, bye.${NC}"
 fi
 ###### ######
+
+##Assignment 5:
+echo "Enter your mysql username: "
+read username
+
+password=''
+
+mysql --user=$username --password=$password --execute="SHOW DATABASES; USE malily; INSERT INTO tblFinal (Name, Hometown, SiblingNumber, Age, FavMovie, RandString, Date) VALUES ('$name', '$hometown', '$siblings', '$age', '$movie', '$generator', '$datestamp')";  
