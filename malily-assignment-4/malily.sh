@@ -64,8 +64,18 @@ read username
 
 password=''
 
+mysql-ctl start
+
 mysql --user=$username --password=$password --execute="SHOW DATABASES;\
-CREATE DATABASE IF NOT EXISTS malily; \
-USE malily;\
-CREATE TABLE IF NOT EXISTS tblFinal(Name VARCHAR(255), Hometown VARCHAR(255), SiblingNumber INT, Age INT, FavMovie VARCHAR(255), RandString VARCHAR(255), Date VARCHAR(255));\
-INSERT INTO tblFinal (Name, Hometown, SiblingNumber, Age, FavMovie, RandString, Date) VALUES ('$name', '$hometown', '$siblings', '$age', '$movie', '$generator', '$datestamp')";  
+CREATE DATABASE IF NOT EXISTS malily";
+
+mysql --user=$username --password=$password malily < malilydab.sql;
+
+mysql --user=$username --password=$password --execute="USE malily;\
+
+SELECT * FROM tblFinal;\
+
+INSERT INTO tblFinal (Name, Hometown, SiblingNumber, Age, FavMovie, RandString, Date) VALUES ('$name', '$hometown', '$siblings', '$age', '$movie', '$generator', '$datestamp');\
+SELECT * FROM tblFinal";
+
+mysqldump --user=$username --password=$password malily > malilydab.sql;  
