@@ -64,4 +64,8 @@ read username
 
 password=''
 
-mysql --user=$username --password=$password --execute="SHOW DATABASES; USE malily; INSERT INTO tblFinal (Name, Hometown, SiblingNumber, Age, FavMovie, RandString, Date) VALUES ('$name', '$hometown', '$siblings', '$age', '$movie', '$generator', '$datestamp')";  
+mysql --user=$username --password=$password --execute="SHOW DATABASES;\
+CREATE DATABASE IF NOT EXISTS malily; \
+USE malily;\
+CREATE TABLE IF NOT EXISTS tblFinal(Name VARCHAR(255), Hometown VARCHAR(255), SiblingNumber INT, Age INT, FavMovie VARCHAR(255), RandString VARCHAR(255), Date VARCHAR(255));\
+INSERT INTO tblFinal (Name, Hometown, SiblingNumber, Age, FavMovie, RandString, Date) VALUES ('$name', '$hometown', '$siblings', '$age', '$movie', '$generator', '$datestamp')";  
