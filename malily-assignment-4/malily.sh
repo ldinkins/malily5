@@ -6,7 +6,6 @@ GREEN='\033[0;32m'
 GREY='\033[1;30m'
 NC='\033[0m' # No Color
 
-
 echo -e "${CYAN}What's your first name:${NC} "
 read name
 
@@ -73,9 +72,8 @@ mysql --user=$username --password=$password malily < malilydab.sql;
 
 mysql --user=$username --password=$password --execute="USE malily;\
 
-SELECT * FROM tblFinal;\
-
 INSERT INTO tblFinal (Name, Hometown, SiblingNumber, Age, FavMovie, RandString, Date) VALUES ('$name', '$hometown', '$siblings', '$age', '$movie', '$generator', '$datestamp');\
+
 SELECT * FROM tblFinal";
 
 mysqldump --user=$username --password=$password malily > malilydab.sql;  
